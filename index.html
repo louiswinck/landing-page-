@@ -6,12 +6,18 @@
   <title>ProOnePage — Page pro en 72h · 149€</title>
   <meta name="description" content="ProOnePage — Je crée votre page web professionnelle, rapide et responsive. Idéal pour artisans, indépendants et petites entreprises. Livraison en 72h." />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="ProOnePage — Page pro en 72h · 149€" />
+  <meta property="og:description" content="Page web simple, design pro, formulaire de contact et optimisation locale. Démo: officielstephanewinckel.vercel.app" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=ProOnePage" />
+
   <!-- Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <style>
     :root { --brand: #001f3f; }
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #111; margin:0; padding:0; }
     .btn { transition: all .18s ease; cursor: pointer; }
     .btn:hover { transform: translateY(-3px); }
     header { backdrop-filter: saturate(120%) blur(4px); }
@@ -20,49 +26,56 @@
     input, textarea { outline: none; }
     input:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(0,31,63,0.2); }
 
-    /* Animation page */
+    /* Styles HERO et animation écran PC */
+    .hero-section { width:100%; padding:80px 20px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; background:#f7f7f7; }
+    .hero-left { flex:1 1 500px; max-width:600px; padding:0 20px; }
+    .hero-right { flex:1 1 500px; max-width:600px; display:flex; justify-content:center; align-items:center; padding:20px; }
+
+    /* PC Screen réaliste */
+    .pc-screen-container { position: relative; width:100%; max-width:500px; height:320px; background:#e5e5e5; border-radius:16px; border:2px solid #ccc; box-shadow:0 16px 40px rgba(0,0,0,0.2); overflow:hidden; display:flex; flex-direction:column; }
+    .pc-screen-top { height:30px; background:#ccc; display:flex; align-items:center; padding:0 10px; gap:6px; }
+    .pc-dot { width:12px; height:12px; border-radius:50%; }
+    .dot-red { background:#ff5f57; }
+    .dot-yellow { background:#ffbd2e; }
+    .dot-green { background:#27c93f; }
+
+    .pc-screen-body { flex:1; padding:12px; display:flex; flex-direction:column; justify-content:space-around; }
+
+    /* Pied de l'écran */
+    .pc-screen-footer { height:24px; background:#ddd; border-top:1px solid #bbb; border-radius:0 0 16px 16px; }
+
+    /* Animation "réaliste" */
+    .anim-block { border-radius:6px; background:#d1d5db; opacity:0; transform:translateY(15px); animation: build 2.5s ease-in-out infinite; }
+    .block-text { height:16px; width:80%; margin:4px 0; }
+    .block-title { height:20px; width:50%; margin:4px 0; background:#b0c4de; }
+    .block-button { height:16px; width:30%; background:#8bb1ff; margin:6px 0; }
+    .block-image { height:40px; width:60%; background:#cfcfcf; margin:6px 0; }
+
+    /* Animation keyframes */
     @keyframes build {
-      0% { opacity: 0; transform: translateY(5px) scaleX(0.8); }
-      50% { opacity: 0.7; transform: translateY(-2px) scaleX(1.05); }
-      100% { opacity: 1; transform: translateY(0) scaleX(1); }
-    }
-    .animate-build { transform-origin: left; animation: build 2s ease-in-out infinite; }
-
-    /* Hero écran PC avec pied */
-    .pc-screen-container {
-      position: relative; display: flex; justify-content: center; width: 100%;
-    }
-    .pc-screen {
-      width: 480px; max-width: 90%; height: 280px; background: #f5f5f5; border-radius: 12px;
-      border: 1px solid #ccc; box-shadow: 0 12px 25px rgba(0,0,0,0.15); overflow: hidden; position: relative;
-    }
-    .pc-screen-header {
-      height: 24px; width: 100%; background: #ddd; display: flex; align-items: center; padding: 0 8px; gap: 6px;
-    }
-    .pc-screen-header .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot.red { background: #ff5f57; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
-
-    .pc-screen-body { padding: 12px; display: flex; flex-direction: column; gap: 6px; }
-
-    /* Pied de l’écran */
-    .pc-screen-foot {
-      width: 140px; height: 14px; background: #ddd; border-radius: 6px; margin: 8px auto 0;
+      0% { opacity:0; transform:translateY(15px); }
+      50% { opacity:0.6; transform:translateY(0); }
+      100% { opacity:1; transform:translateY(0); }
     }
 
-    /* Blocs d’animation différents */
-    .block-line { height: 12px; background: #ccc; border-radius: 4px; }
-    .block-square { width: 40px; height: 40px; background: #bbb; border-radius: 6px; }
-    .block-button { width: 80px; height: 20px; background: #aaa; border-radius: 6px; }
+    /* Delays différents pour plus de réalisme */
+    .delay-1 { animation-delay:0.2s; }
+    .delay-2 { animation-delay:0.5s; }
+    .delay-3 { animation-delay:0.8s; }
+    .delay-4 { animation-delay:1.1s; }
+    .delay-5 { animation-delay:1.4s; }
 
+    /* Full width sections */
+    section { width:100%; display:flex; justify-content:center; }
+    .section-inner { width:100%; max-width:1200px; padding:20px; }
   </style>
 </head>
-<body class="bg-gray-50 leading-relaxed">
+
+<body>
 
   <!-- HEADER -->
   <header class="sticky top-0 z-40 bg-white/90 border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="w-full max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <div class="w-10 h-10 rounded-md bg-[var(--brand)] flex items-center justify-center text-white font-semibold">P1</div>
         <div>
@@ -78,51 +91,135 @@
     </div>
   </header>
 
-  <!-- MAIN HERO -->
-  <main class="w-full">
-
-    <section class="w-full bg-gray-50 py-16 px-6">
-      <div class="grid md:grid-cols-2 gap-10 items-center max-w-full mx-auto">
-        <!-- Texte -->
-        <div class="fade w-full">
-          <h1 class="text-4xl md:text-5xl font-bold mb-4" style="color:var(--brand)">Une page web pro, rapide et visible — livrée en 72h</h1>
-          <p class="text-gray-700 mb-6">ProOnePage conçoit pour vous une page unique (one-page) : claire, responsive et optimisée pour être trouvée localement. Idéale pour artisans, indépendants, commerciaux et petites entreprises.</p>
-          <ul class="space-y-2 text-gray-700 mb-6">
-            <li>✔ Design professionnel personnalisé</li>
-            <li>✔ Contenu structuré : présentation, services, carte & formulaire</li>
-            <li>✔ Optimisation locale pour Google</li>
-            <li>✔ Livraison en <strong>72 heures</strong></li>
-          </ul>
-          <div class="flex gap-3 flex-wrap">
-            <a href="#contact" class="btn bg-[var(--brand)] text-white px-5 py-3 rounded-md">Commander — 149€</a>
-            <a href="#exemples" class="btn border border-[var(--brand)] text-[var(--brand)] px-5 py-3 rounded-md">Voir la démo</a>
-          </div>
-        </div>
-
-        <!-- Écran PC avec animation -->
-        <div class="fade pc-screen-container">
-          <div class="pc-screen">
-            <div class="pc-screen-header">
-              <div class="dot red"></div>
-              <div class="dot yellow"></div>
-              <div class="dot green"></div>
-            </div>
-            <div class="pc-screen-body">
-              <div class="block-line animate-build delay-100"></div>
-              <div class="block-square animate-build delay-200"></div>
-              <div class="block-line animate-build delay-300"></div>
-              <div class="block-button animate-build delay-400"></div>
-              <div class="block-square animate-build delay-500"></div>
-              <div class="block-line animate-build delay-600"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pied de l’écran -->
-        <div class="pc-screen-foot"></div>
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-left fade">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4" style="color:var(--brand)">Une page web pro, rapide et visible — livrée en 72h</h1>
+      <p class="text-gray-700 mb-6">ProOnePage conçoit pour vous une page unique (one-page) : claire, responsive et optimisée pour être trouvée localement. Idéale pour artisans, indépendants, commerciaux et petites entreprises.</p>
+      <ul class="space-y-2 text-gray-700 mb-6">
+        <li>✔ Design professionnel personnalisé</li>
+        <li>✔ Contenu structuré : présentation, services, carte & formulaire</li>
+        <li>✔ Optimisation locale pour Google</li>
+        <li>✔ Livraison en <strong>72 heures</strong></li>
+      </ul>
+      <div class="flex gap-3">
+        <a href="#contact" class="btn bg-[var(--brand)] text-white px-5 py-3 rounded-md">Commander — 149€</a>
+        <a href="#exemples" class="btn border border-[var(--brand)] text-[var(--brand)] px-5 py-3 rounded-md">Voir la démo</a>
       </div>
-    </section>
+    </div>
 
-  </main>
+    <div class="hero-right fade">
+      <div class="pc-screen-container">
+        <div class="pc-screen-top">
+          <div class="pc-dot dot-red"></div>
+          <div class="pc-dot dot-yellow"></div>
+          <div class="pc-dot dot-green"></div>
+        </div>
+        <div class="pc-screen-body">
+          <div class="anim-block block-title delay-1"></div>
+          <div class="anim-block block-text delay-2"></div>
+          <div class="anim-block block-text delay-3"></div>
+          <div class="anim-block block-button delay-4"></div>
+          <div class="anim-block block-image delay-5"></div>
+        </div>
+        <div class="pc-screen-footer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIONS SUIVANTES FULL WIDTH -->
+  <section>
+    <div class="section-inner bg-white rounded-xl p-8 shadow-sm fade">
+      <h2 class="text-2xl font-semibold mb-4" style="color:var(--brand)">Ce qui est inclus — Formule unique • 149€</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-4 border rounded">
+          <h4 class="font-medium mb-2">Design personnalisé</h4>
+          <p class="text-sm text-gray-600">Couleurs, logo, typographie et accroche adaptés à votre activité.</p>
+        </div>
+        <div class="p-4 border rounded">
+          <h4 class="font-medium mb-2">Contenu & contact</h4>
+          <p class="text-sm text-gray-600">Sections présentation, services, carte & formulaire de contact opérationnel.</p>
+        </div>
+        <div class="p-4 border rounded">
+          <h4 class="font-medium mb-2">Mise en ligne rapide</h4>
+          <p class="text-sm text-gray-600">Hébergement simple (ou livraison des fichiers) + nom de domaine en option.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXEMPLE -->
+  <section>
+    <div class="section-inner bg-white rounded-xl p-8 shadow-sm fade text-center">
+      <h3 class="text-2xl font-semibold mb-6" style="color:var(--brand)">Exemple de site réalisé</h3>
+      <div class="max-w-4xl mx-auto">
+        <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="demo-thumb inline-block shadow-lg">
+          <img src="./screen-site.jpeg" alt="Aperçu Dirickx Luxembourg" class="rounded-xl" />
+          <div class="demo-overlay"></div>
+        </a>
+        <p class="text-sm text-gray-500 mt-3">Cliquez sur l’image pour visiter le site complet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="section-inner bg-white rounded-xl p-8 shadow-sm fade">
+      <h3 class="text-2xl font-semibold mb-4" style="color:var(--brand)">Commander / Contact</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <p class="text-gray-700 mb-4">
+            Prêt à lancer ? Remplis le formulaire ci-dessous ou envoie un message direct à 
+            <strong style="color:var(--brand)">proonepage.pro@gmail.com</strong>.
+          </p>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>✔ Prix : 149€</li>
+            <li>✔ Livraison : 72 heures après validation</li>
+            <li>✔ Paiement : virement ou PayPal (à configurer)</li>
+          </ul>
+        </div>
+        <form action="https://formspree.io/f/yourformid" method="POST" class="space-y-3 text-center">
+          <div>
+            <label class="text-sm font-medium block text-left">Nom / Entreprise</label>
+            <input name="name" required class="mt-1 block w-full rounded-md border px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium block text-left">Email</label>
+            <input name="email" type="email" required class="mt-1 block w-full rounded-md border px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium block text-left">Téléphone</label>
+            <input name="phone" class="mt-1 block w-full rounded-md border px-3 py-2" />
+          </div>
+          <div>
+            <label class="text-sm font-medium block text-left">Votre message / Brief</label>
+            <textarea name="message" rows="4" required class="mt-1 block w-full rounded-md border px-3 py-2"></textarea>
+          </div>
+          <button type="submit" class="btn border border-[var(--brand)] text-[var(--brand)] px-5 py-3 rounded-md mt-3">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-sm text-gray-500 text-center py-8">
+    © <span id="year"></span> ProOnePage — Page pro en 72h · 149€
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
