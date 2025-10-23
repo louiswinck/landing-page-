@@ -35,6 +35,22 @@
     .demo-thumb:hover .demo-overlay { opacity: 1; }
     input, textarea { outline: none; }
     input:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 2px rgba(0,31,63,0.2); }
+
+    /* Animation "construction" des blocs */
+    @keyframes build {
+      0% { opacity: 0; transform: scaleX(0); }
+      50% { opacity: 0.5; transform: scaleX(0.5); }
+      100% { opacity: 1; transform: scaleX(1); }
+    }
+    .animate-build {
+      transform-origin: left;
+      animation: build 0.8s forwards;
+    }
+    .animate-build.delay-100 { animation-delay: 0.1s; }
+    .animate-build.delay-200 { animation-delay: 0.2s; }
+    .animate-build.delay-300 { animation-delay: 0.3s; }
+    .animate-build.delay-400 { animation-delay: 0.4s; }
+    .animate-build.delay-500 { animation-delay: 0.5s; }
   </style>
 </head>
 
@@ -78,15 +94,19 @@
         </div>
       </div>
 
-      <div class="fade">
-        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="demo-thumb block">
-            <img src="./screen-site.jpeg" alt="Aperçu du site Dirickx Luxembourg" />
-            <div class="demo-overlay"></div>
-          </a>
-          <div class="p-5 text-center">
-            <p class="text-sm text-gray-500">Exemple : site Dirickx Luxembourg — réalisé avec ProOnePage.</p>
-          </div>
+      <!-- Animation de page qui se construit -->
+      <div class="fade flex justify-center items-center">
+        <div class="relative w-64 h-40 bg-gray-100 rounded-lg shadow-md overflow-hidden border border-gray-300">
+          <!-- Header -->
+          <div class="bg-[var(--brand)] h-4 w-full animate-pulse"></div>
+          <!-- Section 1 -->
+          <div class="mt-2 mx-2 h-3 bg-gray-300 rounded animate-build delay-100"></div>
+          <div class="mt-1 mx-2 h-3 bg-gray-300 rounded animate-build delay-200"></div>
+          <!-- Section 2 -->
+          <div class="mt-2 mx-2 h-3 bg-gray-300 rounded animate-build delay-300"></div>
+          <div class="mt-1 mx-2 h-3 bg-gray-300 rounded animate-build delay-400"></div>
+          <!-- Footer -->
+          <div class="absolute bottom-2 left-2 right-2 h-2 bg-gray-400 rounded animate-build delay-500"></div>
         </div>
       </div>
     </section>
