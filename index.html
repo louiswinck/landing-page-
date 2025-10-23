@@ -23,6 +23,15 @@
     header { backdrop-filter: saturate(120%) blur(4px); }
     .fade { opacity: 0; transform: translateY(12px); animation: fade .6s forwards; }
     @keyframes fade { to { opacity: 1; transform: none; } }
+    .demo-thumb { position: relative; overflow: hidden; border-radius: 0.75rem; }
+    .demo-thumb img { width: 100%; height: auto; transition: transform 0.5s ease; }
+    .demo-thumb:hover img { transform: scale(1.03); }
+    .demo-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.15);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .demo-thumb:hover .demo-overlay { opacity: 1; }
   </style>
 </head>
 
@@ -68,12 +77,12 @@
 
       <div class="fade">
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
-          <iframe src="https://officielstephanewinckel.vercel.app" 
-                  class="w-full h-80 border-0"
-                  title="Exemple de site - Dirickx Luxembourg"
-                  loading="lazy"></iframe>
+          <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="demo-thumb block">
+            <img src="https://officielstephanewinckel.vercel.app/hero-project.jpg" alt="Aperçu du site Dirickx Luxembourg" />
+            <div class="demo-overlay"></div>
+          </a>
           <div class="p-5 text-center">
-            <p class="text-sm text-gray-500">Exemple concret : site Dirickx Luxembourg — créé avec ProOnePage.</p>
+            <p class="text-sm text-gray-500">Exemple : site Dirickx Luxembourg — réalisé avec ProOnePage.</p>
           </div>
         </div>
       </div>
@@ -106,17 +115,15 @@
     </section>
 
     <!-- EXEMPLE -->
-    <section id="exemples" class="bg-white rounded-xl p-8 shadow-sm fade">
-      <h3 class="text-2xl font-semibold mb-6 text-center" style="color:var(--brand)">Exemple de site</h3>
-      <div class="rounded-xl overflow-hidden shadow-md border">
-        <iframe src="https://officielstephanewinckel.vercel.app" 
-                class="w-full h-[600px] border-0"
-                title="Démo Dirickx Luxembourg"
-                loading="lazy"></iframe>
+    <section id="exemples" class="bg-white rounded-xl p-8 shadow-sm fade text-center">
+      <h3 class="text-2xl font-semibold mb-6" style="color:var(--brand)">Exemple de site réalisé</h3>
+      <div class="max-w-4xl mx-auto">
+        <a href="https://officielstephanewinckel.vercel.app" target="_blank" rel="noopener" class="demo-thumb inline-block shadow-lg">
+          <img src="https://officielstephanewinckel.vercel.app/hero-project.jpg" alt="Aperçu Dirickx Luxembourg" class="rounded-xl" />
+          <div class="demo-overlay"></div>
+        </a>
+        <p class="text-sm text-gray-500 mt-3">Cliquez sur l’image pour visiter le site complet.</p>
       </div>
-      <p class="text-center text-sm text-gray-500 mt-3">
-        Exemple : Stéphane Winckel – Dirickx Luxembourg (réalisé avec ProOnePage)
-      </p>
     </section>
 
     <!-- CONTACT -->
