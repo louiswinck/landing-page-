@@ -36,10 +36,21 @@
       align-items: center;
       gap: 16px;
     }
+
+    /* LOGO adouci et intégré */
     .header-logo {
       height: 60px;
       width: auto;
+      opacity: 0.9;
+      filter: brightness(1.05) saturate(1.1) blur(0.3px);
+      mix-blend-mode: lighten;
+      transition: all 0.4s ease;
     }
+    .header-logo:hover {
+      transform: scale(1.03);
+      filter: brightness(1.15) blur(0);
+    }
+
     .header-text {
       display: flex;
       flex-direction: column;
@@ -93,21 +104,8 @@
     .section-inner { width:100%; max-width:1200px; padding:20px; }
 
     /* Effet hover doux sur les boutons */
-    .btn {
-      transition: all 0.3s ease;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,31,63,0.2);
-    }
-
-    /* Animation légère du logo */
-    header img {
-      transition: transform 0.4s ease;
-    }
-    header img:hover {
-      transform: scale(1.05) rotate(-2deg);
-    }
+    .btn { transition: all 0.3s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,31,63,0.2); }
   </style>
 </head>
 
